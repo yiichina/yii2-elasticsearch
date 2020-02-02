@@ -148,7 +148,7 @@ class ActiveRecord extends BaseActiveRecord
         }
         $command = static::getDb()->createCommand();
         $result = $command->get(static::index(), static::type(), $primaryKey, $options);
-        if ($result['found']) {
+        if (isset($result['found'])) {
             $model = static::instantiate($result);
             static::populateRecord($model, $result);
             $model->afterFind();
